@@ -17,7 +17,6 @@ import {
   AuthCredentialsValidator,
   TAuthCredentialsValidator,
 } from '@/lib/validators/account-credentials-validator'
-// import { trpc } from '@/trpc/client'
 import { toast } from 'sonner'
 import { ZodError } from 'zod'
 import { useRouter } from 'next/navigation'
@@ -33,10 +32,13 @@ const Page = () => {
         resolver: zodResolver(AuthCredentialsValidator),
       })
       // const {data} = trpc.anyApiRoute.useQuery()
+      const { mutate, isLoading } = trpc.auth.createPayloadUser.useMutation({})
+
       const onSubmit = ({
         email,
         password,
       }: TAuthCredentialsValidator) => {
+        mutate({ email, password })
       }
       return (
         <>
