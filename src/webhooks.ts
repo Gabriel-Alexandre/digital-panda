@@ -34,7 +34,7 @@ export const stripeWebhookHandler = async (
             : 'Unknown Error'
         }`
       )
-  }
+  } 
 
   const session = event.data
     .object as Stripe.Checkout.Session

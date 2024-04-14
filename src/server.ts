@@ -39,7 +39,7 @@ const start = async () => {
   })
 
   app.post(
-    '/api/webhook/stripe',
+    '/api/webhooks/stripe',
     webhookMiddleware,
     stripeWebhookHandler
   )
