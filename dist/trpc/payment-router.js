@@ -90,7 +90,7 @@ exports.paymentRouter = (0, trpc_1.router)({
                         });
                     });
                     line_items.push({
-                        price: 'price_1P4jSpFobTRga20DB0ImVJbK',
+                        price: 'price_1P5UTOP47RRDfeb4QWj0zBTp',
                         quantity: 1,
                         adjustable_quantity: {
                             enabled: false,
@@ -102,7 +102,7 @@ exports.paymentRouter = (0, trpc_1.router)({
                     return [4 /*yield*/, stripe_1.stripe.checkout.sessions.create({
                             success_url: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/thank-you?orderId=").concat(order.id),
                             cancel_url: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/cart"),
-                            payment_method_types: ['card', 'paypal'],
+                            payment_method_types: ['card'],
                             mode: 'payment',
                             metadata: {
                                 userId: user.id,
