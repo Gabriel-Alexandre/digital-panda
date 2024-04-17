@@ -9,87 +9,66 @@ import { cookies } from 'next/headers'
 import UserAccountNav from './UserAccountNav'
 import Image from 'next/image'
 import MobileNav from './MobileNav'
+//import { HomeIcon } from '@heroicons/react/solid' // Importing HomeIcon
+import { Home } from 'lucide-react' // Importing Home icon from Lucide React
+
 
 const Navbar = async () => {
   const nextCookies = cookies()
   const { user } = await getServerSideUser(nextCookies)
-
 
   return (
     <div className='bg-white sticky z-50 top-0 inset-x-0 h-16'>
       <header className='relative bg-white'>
         <MaxWidthWrapper>
           <div className='border-b border-gray-200'>
-            <div className='flex h-16 items-center'>
+            <div className='flex justify-between h-16 items-center'>
 
+              {/* Mobile Navigation Button */}
+              <MobileNav />
 
-              <div className='ml-4 flex lg:ml-0'>
+              {/* Image visible on large screens, hidden on small screens */}
+              <div className='hidden lg:flex ml-4'>
                 <Link href='/'>
-                  {/* <Icons.logo className='h-20 w-20' /> */}
                   <Image
-                    className='h-18 w-18'
                     src='/logoNav.png'
                     alt='logo de um panda'
+                    className='h-12 w-12'
                   />
                 </Link>
               </div>
 
-              <div className='hidden z-50 lg:ml-8 lg:block lg:self-stretch'>
+              {/* Icon visible on small screens, hidden on large screens */}
+              <div className='lg:hidden ml-4 flex'>
+                <Link href='/'>
+                  <Home className='h-6 w-6 text-gray-500 hover:text-blue-500' />
+                </Link>
+              </div>
+
+              {/* Hide these elements on smaller screens */}
+              <div className='hidden lg:flex lg:ml-8 lg:self-stretch'>
                 <NavItems />
               </div>
 
-              <div className='ml-auto flex items-center'>
-                <div className='hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6'>
-                  {user ? null : (
-                    <Link
-                      href='/sign-in'
-                      className={buttonVariants({
-                        variant: 'ghost',
-                      })}>
-                      Sign in
-                    </Link>
-                  )}
-
-                  {user ? null : (
-                    <span
-                      className='h-6 w-px bg-gray-200'
-                      aria-hidden='true'
-                    />
-                  )}
-
+              <div className='hidden lg:flex lg:flex-1 lg:items-center lg:justify-start lg:space-x-6'>
+                <div className='ml-auto flex items-center'>
                   {user ? (
                     <UserAccountNav user={user} />
                   ) : (
-                    <Link
-                      href='/sign-up'
-                      className={buttonVariants({
-                        variant: 'ghost',
-                      })}>
-                      Create account
-                    </Link>
+                    <>
+                      <Link href='/sign-in' className={buttonVariants({ variant: 'ghost' })}>Sign in</Link>
+                      <span className='h-6 w-px bg-gray-200' aria-hidden='true' />
+                      <Link href='/sign-up' className={buttonVariants({ variant: 'ghost' })}>Create account</Link>
+                    </>
                   )}
-
-                  {user ? (
-                    <span
-                      className='h-6 w-px bg-gray-200'
-                      aria-hidden='true'
-                    />
-                  ) : null}
-
-                  {user ? null : (
-                    <div className='flex lg:ml-6'>
-                      <span
-                        className='h-6 w-px bg-gray-200'
-                        aria-hidden='true'
-                      />
-                    </div>
-                  )}
-
-                  <div className='ml-4 flow-root lg:ml-6'>
-                    <Cart />
-                  </div>
                 </div>
               </div>
+
+              {/* Cart always visible on the right */}
+              <div className='mr-8 lg:ml-8 '>
+                <Cart />
+              </div>
+
             </div>
           </div>
         </MaxWidthWrapper>
@@ -98,4 +77,4 @@ const Navbar = async () => {
   )
 }
 
-export default Navbar
+export default Navbar;

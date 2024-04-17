@@ -87,7 +87,7 @@ const Page = () => {
             <Image
               className='h-20 w-20'
               src='/logo.jpg'
-            
+             
               alt='logo de um panda'
             />
             <h1 className='text-2xl font-semibold tracking-tight'>
