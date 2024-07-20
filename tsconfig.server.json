@@ -1,10 +1,15 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-      "module": "CommonJS",
-      "outDir": "dist",
-      "noEmit": false,
-      "jsx": "react"
-    },
-    "include": ["src/server.ts", "src/payload.config.ts"]
-  }
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "./dist",
+    "noEmit": false,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es2018",
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*.ts"]
+}
