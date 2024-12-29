@@ -34,6 +34,8 @@ const Navbar = async () => {
                     src='/logoNav.png'
                     alt='logo de um panda'
                     className='h-12 w-12'
+                    width={100}
+                    height={100}
                   />
                 </Link>
               </div>

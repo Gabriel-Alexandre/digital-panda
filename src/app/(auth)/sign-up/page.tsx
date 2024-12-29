@@ -81,7 +81,8 @@ const Page = () => {
             <Image
               className='h-20 w-20'
               src='/logo.jpg'
-       
+              width={100}
+              height={100}
               
               alt='logo de um panda'
             />
