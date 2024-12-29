@@ -1,6 +1,7 @@
 # Estágio de construção
 FROM node:20-slim AS builder
 
+# Define diretório de trabalho
 WORKDIR /app
 
 # Copia os arquivos de configuração
@@ -18,15 +19,20 @@ COPY . .
 
 # Gera os tipos do Payload e faz o build completo
 RUN npm run generate:types
-RUN npm run build
+RUN npm run build:payload
+RUN npm run build:server
+RUN npm run copyfiles
+RUN npm run build:next
 
 # Estágio de produção
 FROM node:20-slim AS runner
 
+# Define diretório de trabalho
 WORKDIR /app
 
 # Copia os arquivos necessários do estágio de build
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/build ./build
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
