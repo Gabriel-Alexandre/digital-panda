@@ -19,6 +19,10 @@ const transporter = nodemailer_1.default.createTransport({
         user: 'resend',
         pass: process.env.RESEND_API_KEY,
     },
+    tls: {
+        rejectUnauthorized: false,
+        ciphers: 'TLS_AES_128_GCM_SHA256'
+    },
 });
 let cached = global.payload;
 if (!cached) {
