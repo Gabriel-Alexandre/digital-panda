@@ -3,7 +3,7 @@ const nextConfig = {
 	images: {
 		domains: [	
 				"localhost",
-			    "https://digital-panda.vercel.app/"
+			    "digital-panda.vercel.app"
 			
 		],
 	},
