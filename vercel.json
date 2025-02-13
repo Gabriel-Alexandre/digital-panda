@@ -7,21 +7,15 @@
       "config": {
         "includeFiles": ["src/**/*"]
       }
-    },
-    {
-      "src": "src/payload.config.ts",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/server.js"
+      "dest": "dist/server.js"
     }
   ],
   "env": {
-    "PAYLOAD_CONFIG_PATH": "dist/payload.config.js",
-    "NODE_ENV": "production",
     "START_COMMAND": "yarn start"
   }
 }
