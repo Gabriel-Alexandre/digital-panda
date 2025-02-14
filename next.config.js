@@ -3,8 +3,7 @@ const nextConfig = {
 	images: {
 		domains: [	
 				"localhost",
-			    "digital-panda.vercel.app"
-			
+			    "digital-panda-dtr6.onrender.com"
 		],
 	},
 };
