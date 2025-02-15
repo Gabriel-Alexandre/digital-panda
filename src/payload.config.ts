@@ -15,9 +15,7 @@ dotenv.config({
 })
 
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL 
-    ? `${process.env.NEXT_PUBLIC_SERVER_URL}`
-    : 'https://digital-panda-dtr6.onrender.com', //http://localhost:3000
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'https://digital-panda-dtr6.onrender.com',
   collections: [Users, Products, Media, ProductFiles, Orders],
   routes: {
     admin: '/sell',

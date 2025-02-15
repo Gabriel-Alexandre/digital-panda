@@ -42,3 +42,7 @@ export const PRODUCT_CATEGORIES = [
       ],
     },
   ]
+
+export const NEXT_PUBLIC_SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || 'https://digital-panda-dtr6.onrender.com'
+
+export const NEXT_PUBLIC_CLIENT_URL = process.env.NEXT_PUBLIC_CLIENT_URL || 'https://digital-panda-dtr6.onrender.com'
