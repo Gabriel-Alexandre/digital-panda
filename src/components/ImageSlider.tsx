@@ -15,7 +15,7 @@ interface ImageSliderProps {
 }
 
 const ImageSlider = ({ urls }: ImageSliderProps) => {
-  const formattedUrls = urls.map((url) => {
+  const formatUrl = (url: string) => {
     // Verifica se é uma URL do Next.js Image
     if (url.startsWith('/_next/image?url=')) {
       // Extrai a URL original da query string
@@ -28,7 +28,9 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
       return url.replace('localhost', 'digital-panda-dtr6.onrender.com')
     }
     return url
-  })
+  }
+
+  console.log(urls, formatUrl(urls[0]))
 
   const [swiper, setSwiper] = useState<null | SwiperType>(
     null
@@ -100,7 +102,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
         modules={[Pagination]}
         slidesPerView={1}
         className='h-full w-full'>
-        {formattedUrls.map((url, i) => (
+        {urls.map((url, i) => (
           <SwiperSlide
             key={i}
             className='-z-10 relative h-full w-full'>
@@ -108,7 +110,7 @@ const ImageSlider = ({ urls }: ImageSliderProps) => {
               fill
               loading='eager'
               className='-z-10 h-full w-full object-cover object-center'
-              src={url}
+              src={formatUrl(url)}
               alt='Product image'
             />
           </SwiperSlide>
